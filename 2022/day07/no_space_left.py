@@ -64,9 +64,7 @@ for idx,l in enumerate(dat):
                         while current_folder.name!="/":
                             current_folder = current_folder.parent
                 else:
-                    if arg in [x.name for x in current_folder.contents if isinstance(x,Folder)]:
-                        pass
-                    else:
+                    if not arg in [x.name for x in current_folder.contents if isinstance(x,Folder)]:
                         current_folder.add_subfolder(arg, current_folder)
                     idx = 0
                     for x in current_folder.contents:
@@ -75,7 +73,7 @@ for idx,l in enumerate(dat):
                         idx += 1
                     current_folder = current_folder.contents[idx]
             case "ls":
-                pass
+                continue
     # if not a command (only cd or ls),
     # ls output
     elif tokens[0]=="dir":
